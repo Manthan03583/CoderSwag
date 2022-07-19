@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android.coderswag.Models.Category
 import com.example.android.coderswag.R
 import com.example.android.coderswag.Services.DataService.catagories
@@ -31,17 +32,33 @@ class CategoryAdapter(context: Context, categories: List<Category>) : BaseAdapte
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val categoryView: View
-        categoryView = LayoutInflater.from(context).inflate(R.layout.custom_list_item, null)
-        val categoryImage: ImageView = categoryView.findViewById(R.id.CatagoryImage)
-        val categoryName: TextView = categoryView.findViewById(R.id.CatagoryName)
+        val holder: ViewHolder
+
+        if(convertView == null){
+            categoryView = LayoutInflater.from(context).inflate(R.layout.custom_list_item, null)
+            holder = ViewHolder()
+            holder.categoryImage = categoryView.findViewById(R.id.CatagoryImage)
+            holder.categoryName = categoryView.findViewById(R.id.CatagoryName)
+            categoryView.tag = holder
+            println("first")
+        }
+        else{
+            holder = convertView.tag as ViewHolder
+            categoryView = convertView
+            println("not first")
+        }
 
         val category = categories[position]
-        categoryName.text = category.tittle
+        holder.categoryName?.text = category.tittle
 
         val resourceId = context.resources.getIdentifier(category.image, "drawable",context.packageName)
-        categoryImage.setImageResource(resourceId)
-        println(resourceId)
+        holder.categoryImage?.setImageResource(resourceId)
 
         return categoryView
+    }
+
+    private class ViewHolder{
+        var categoryImage: ImageView? = null
+        var categoryName: TextView? = null
     }
 }
