@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/hatimage" />
+        tools:srcCompat="@drawable/hatimage"
+        android:layout_marginBottom="16dp"/>
 
     <TextView
         android:id="@+id/CatagoryName"
