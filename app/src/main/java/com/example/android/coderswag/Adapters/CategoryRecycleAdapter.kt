@@ -1,6 +1,6 @@
 package com.example.android.coderswag.Adapters
 
-import android.content.Context
+import  android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +14,8 @@ class CategoryRecycleAdapter(val context: Context, val categories:List<Category>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.custom_list_item, parent, false)
+        // we can also add context in place of parent
+        // val view = LayoutInflater.from(context).inflate(R.layout.custom_list_item, context, false)
         return Holder(view)
     }
 
