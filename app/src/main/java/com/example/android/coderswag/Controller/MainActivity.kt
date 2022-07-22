@@ -2,6 +2,7 @@ package com.example.android.coderswag.Controller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.coderswag.Adapters.CategoryRecycleAdapter
 import com.example.android.coderswag.R
@@ -16,7 +17,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = CategoryRecycleAdapter(this,DataService.catagories)
+        adapter = CategoryRecycleAdapter(this,DataService.catagories){
+            category -> Toast.makeText(this,category.tittle,Toast.LENGTH_SHORT)
+        }
         CategoryListView.adapter = adapter
 
         val layoutManager = LinearLayoutManager(this)
