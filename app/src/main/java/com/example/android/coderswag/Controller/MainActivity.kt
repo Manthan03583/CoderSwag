@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         adapter = CategoryRecycleAdapter(this,DataService.catagories){
-            category -> Toast.makeText(this,category.tittle,Toast.LENGTH_SHORT)
+            category -> Toast.makeText(this,category.tittle,Toast.LENGTH_SHORT).show()
         }
         CategoryListView.adapter = adapter
 
